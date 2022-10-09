@@ -1,2 +1,2 @@
 # Deta-Utils-Bot
- A discord bot made with deta-discord-interactions for simple utility and QoL features
+ A serverless discord bot made with [deta-discord-interactions](https://github.com/etrotta/deta-discord-interactions) for simple utility features.
