@@ -1,7 +1,7 @@
 from deta_discord_interactions import DiscordInteractionsBlueprint
 from deta_discord_interactions import Context, Option, Choice
 from deta_discord_interactions import Message
-from deta_discord_interactions import Embed, embed
+from deta_discord_interactions import Embed
 
 BOT_COLOR = 0xbb3892
 
@@ -10,7 +10,7 @@ info = Embed(
     title="Bot Information",
     description="Utility discord interactions bot, written in Python and hosted on Deta."
     " Relevant links:"
-    " [Source code on GitHub](https://github.com/etrotta/deta-utils-bot),"
+    " [Source code on GitHub](https://github.com/etrotta/deta-utils-discord-bot),"
     " [Library on GitHub](https://github.com/etrotta/deta-discord-interactions),"
     " [Library on pypi](https://pypi.org/project/deta-discord-interactions/)",
     color=BOT_COLOR,
