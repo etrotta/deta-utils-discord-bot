@@ -106,7 +106,7 @@ def message_to_tag(ctx: Context, message: Message):
     return modal('', message.content)
 
 
-@blueprint.custom_handler("create_tag_modal")
+@blueprint.custom_handler("tags_modal")
 def save_modal_tag(ctx: Context):
     server_tags = database[ctx.guild_id].setdefault("tags", {})
     name = ctx.get_component("tag_name").value
