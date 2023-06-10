@@ -1,0 +1,4 @@
+{
+    "content": "You can also set other supported properties besides `content` and `embed` such as `ephemeral`. By default, messages from `/tag` are not ephemeral and messages from the `/tags` select menu are ephemeral. \nYou can explicitly set `\"ephemeral\": true` / `\"ephemeral\": false` in the JSON to change it to always/never use ephemeral messages for specific tags.",
+    "ephemeral": true
+}

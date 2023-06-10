@@ -1,0 +1,33 @@
+{
+    "embed": {
+        "title": "Managing Tags",
+        "color": 10509236,
+        "footer": {
+            "icon_url": "https://cdn.discordapp.com/avatars/256442550683041793/9308f50776d2008e8b24c330b2b7e039.webp?size=80",
+            "text": "etrotta"
+        },
+        "author": {
+            "icon_url": "https://cdn.discordapp.com/avatars/256442550683041793/9308f50776d2008e8b24c330b2b7e039.webp?size=80",
+            "name": "etrotta"
+        },
+        "timestamp": "2022-10-13T02:00:00.000000",
+        "description": "The `/managetags manage` command allows for you to create and edit tags, and `/managetags delete` allows for you to delete them. By default, these commands require Administrator permissions since they allow indirect access to your Deta Drive.\nUsers can invoke them using `/tag` and `/tags`\nFor example, you can delete this tag with `/managetags delete intro`",
+        "fields": [
+            {
+                "name": "Creating Embeds",
+                "value": "If your tag content starts with `{`, it will be assumed to be a JSON representation of a [discord interactions message](https://github.com/etrotta/deta-discord-interactions/blob/deta/deta_discord_interactions/models/message.py). If you want to build Embeds, I personally recommend using a website such as [Glitchii's embed builder](https://glitchii.github.io/embedbuilder/), exporting the JSON then using `/managetags manage` or directly uploading to the Deta Drive under `discord_tags`.",
+                "inline": false
+            },
+            {
+                "name": "Confused? Drop me a DM",
+                "value": "You can find me in the Deta discord server, in the Python Discord server or just send me a friend request: <@256442550683041793> ~~*offer available for a limited time~~",
+                "inline": false
+            },
+            {
+                "name": "Why does this tag keeps coming back after being deleted?",
+                "value": "Some default tags are created when you visit `example.deta.app/setup`.\nYou should only have to visit it one time after installing or updating environment variables though.\nAditionally, you can edit the `TAGS_SETTINGS` environment variable to stop setting the default tags on setup, by setting it to 1 ('read only') or 3 (read + allow editing via /managetags).",
+                "inline": false
+            }
+        ]
+    }
+}
