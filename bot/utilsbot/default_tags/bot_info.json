@@ -1,0 +1,18 @@
+{
+    "embed": {
+        "title": "Bot Information",
+        "description": "I am a Discord Interactions bot with utility features, written in Python and hosted on Deta Space.",
+        "fields": [
+            {
+                "name": "Host your own copy with Deta Space:",
+                "value": "https://deta.space/discovery/@etrotta/utilsbot",
+                "inline": false
+            },
+            {
+                "name": "Create your own bot:",
+                "value": "Install the [library on pypi](https://pypi.org/project/deta-discord-interactions/) or check out the [GitHub page](https://github.com/etrotta/deta-discord-interactions)",
+                "inline": false
+            }
+        ]
+    }
+}

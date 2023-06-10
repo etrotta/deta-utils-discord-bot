@@ -1,0 +1,38 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+icon: icon.png
+micros:
+  - name: utilsbot
+    src: bot
+    path: bot
+    engine: python3.9
+    run: python run.py
+    dev: python run_local.py
+    primary: true
+    public_routes:
+      - "/discord"
+    # actions:
+    #   - id: "trigger_repeaters"
+    #     name: "Trigger Repeaters"
+    #     description: "Trigger repeating webhooks"
+    #     trigger: "schedule"
+    #     default_interval: "1 minute"
+    presets:
+      env:
+        - name: DISCORD_CLIENT_ID
+          description: The ID of the Discord Application
+        - name: DISCORD_PUBLIC_KEY
+          description: The Public Key of the Discord Application
+        - name: DISCORD_CLIENT_SECRET
+          description: The Secret token of the Discord Application
+        - name: NOTES_SETTINGS
+          description: Bitwise settings for Notes. 1=READ 2=WRITE
+          default: "3"
+        - name: TAGS_SETTINGS
+          description: Bitwise settings for Tags. 1=READ 2=WRITE 4=INCLUDEDEFAULT
+          default: "7"
+        # - name: SCRIPTS_SETTINGS
+        #   description: Bitwise settings for Scripts. 1=RUN
+        #   default: 0
+        - name: GUILDS
+          description: "Set commands for these guilds instead of setting Global commands (format: 123&456&789)"

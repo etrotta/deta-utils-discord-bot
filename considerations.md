@@ -1,1 +1,0 @@
-- There are no measures in place to prevent users from creating and sharing spam, abusive content or even illegal content. As such, I removed the option to make `/notes` results non-ephemeral.
