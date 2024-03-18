@@ -31,6 +31,7 @@ from deta_discord_interactions import (
     Option,
     Choice,
 )
+from deta_discord_interactions.enums.context_types import CONTEXT_TYPE, INTEGRATION_TYPE
 from deta_discord_interactions.utils.database import Database, LoadableDataclass
 
 @dataclasses.dataclass
@@ -67,14 +68,14 @@ def requires_management(foo):
             return foo(*args, **kwargs)
         elif READ_ENABLED:
             return Message(
-                f"The Notes module has been limited to read-only.\n"
+                "The Notes module has been limited to read-only.\n"
                 "If the administrator has announced plans to fully terminate access to the `/notes` commands, "
                 "you may want to export your existing notes using `/notes export`.",
                 ephemeral=True,
             )
         else:
             return Message(
-                f"The Notes module has been disabled.\n"
+                "The Notes module has been disabled.\n"
                 "You may want to contact the bot administrator to remove the permissions "
                 "to use the command or completely remove the bot's `/notes` command.",
                 ephemeral=True,
@@ -84,7 +85,9 @@ def requires_management(foo):
 
 notes = blueprint.command_group(
     "notes",
-    "Create, Read, Update, Delete and List personal notes. WARNING: The bots admin can see your notes."
+    "Create, Read, Update, Delete and List personal notes. WARNING: The bots admin can see your notes.",
+    integration_types=[INTEGRATION_TYPE.GUILD_INSTALL, INTEGRATION_TYPE.USER_INSTALL],
+    contexts=[CONTEXT_TYPE.GUILD, CONTEXT_TYPE.BOT_DM, CONTEXT_TYPE.PRIVATE_CHANNEL],
 )
 
 # Create
@@ -184,7 +187,13 @@ def note_modal(ctx: Context, name: Autocomplete[str] = ''):
         return modal('', '')
 
 
-@blueprint.command("Save as note", "Save this message as a personal note.", type=ApplicationCommandType.MESSAGE)
+@blueprint.command(
+    "Save as note",
+    "Save this message as a personal note.",
+    type=ApplicationCommandType.MESSAGE,
+    integration_types=[INTEGRATION_TYPE.GUILD_INSTALL, INTEGRATION_TYPE.USER_INSTALL],
+    contexts=[CONTEXT_TYPE.GUILD, CONTEXT_TYPE.BOT_DM, CONTEXT_TYPE.PRIVATE_CHANNEL],
+)
 @requires_management
 def message_to_note(ctx: Context, message: Message):
     if not message.content:  # only embeds or only components

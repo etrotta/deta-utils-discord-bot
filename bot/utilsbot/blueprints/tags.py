@@ -21,6 +21,7 @@ from deta_discord_interactions import (
     Choice,
 )
 from deta_discord_interactions.enums.permissions import PERMISSION
+from deta_discord_interactions.enums.context_types import CONTEXT_TYPE, INTEGRATION_TYPE
 
 from deta_discord_interactions.utils.database import Drive
 
@@ -36,8 +37,9 @@ MANAGE_ENABLED = ENV_SETTINGS & 2
 manage_group = admin_blueprint.command_group(
     "managetags",
     "Create, Update and Delete bot tags.",
-    dm_permission=False,
     default_member_permissions=PERMISSION.ADMINISTRATOR,
+    integration_types=[INTEGRATION_TYPE.GUILD_INSTALL],
+    contexts=[CONTEXT_TYPE.GUILD],
 )
 
 
@@ -62,7 +64,7 @@ def requires_management(foo):
             return foo(*args, **kwargs)
         elif READ_ENABLED:
             return Message(
-                f"The Tags module has been limited to read-only.\n"
+                "The Tags module has been limited to read-only.\n"
                 "You may want to contact the bot administrator to remove the permissions "
                 "to use the tag management commands or completely remove them.\n"
                 "The bot's administrator can still manage tags via their Deta Drive.",
@@ -70,7 +72,7 @@ def requires_management(foo):
             )
         else:
             return Message(
-                f"The Tags module has been disabled.\n"
+                "The Tags module has been disabled.\n"
                 "You may want to contact the bot administrator to remove the permissions "
                 "to use the related commands or completely remove them",
                 ephemeral=True,
@@ -124,7 +126,11 @@ def manage_tag(ctx: Context, name: Autocomplete[str]):
 
 
 # Read - Public
-@public_blueprint.command("tag", "Retrieve a bot tag.")
+@public_blueprint.command(
+    "tag",
+    "Retrieve a bot tag.",
+    integration_types=[INTEGRATION_TYPE.GUILD_INSTALL, INTEGRATION_TYPE.USER_INSTALL],
+)
 @requires_read
 def get_tag(ctx: Context, name: Autocomplete[str]):
     tag = (drive / f'{name}.json').read_text()
@@ -148,7 +154,11 @@ def delete_tag(ctx: Context, name: Autocomplete[str]):
 
 
 # List - Public
-@public_blueprint.command("tags", "List all tags from this bot")
+@public_blueprint.command(
+    "tags",
+    "List all tags from this bot",
+    integration_types=[INTEGRATION_TYPE.GUILD_INSTALL, INTEGRATION_TYPE.USER_INSTALL],
+)
 @requires_read
 def list_tags(ctx: Context, ephemeral: bool = False):
     bot_tags = [path.stem for path in drive.iterdir()]
