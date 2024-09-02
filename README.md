@@ -1,3 +1,8 @@
+> [!WARNING]
+> As of September 2024, since Deta Space is being [sunset](https://web.archive.org/web/20240902151210/https://deta.space/sunset) this repository (as well as any other projects based on deta-discord-interactions) may stop working.
+>
+> I have yet to decide whenever I will update it or Archive the repository.
+
 # Deta-Utils-Bot
 A serverless discord bot made with [deta-discord-interactions](https://github.com/etrotta/deta-discord-interactions) for simple utility features.
 
